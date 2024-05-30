@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Current Weather in {{ city }}</h2>
+
+  <form (submit)="getWeather(cityInput.value)">
+    <input
+      type="text"
+      #cityInput
+      placeholder="Enter city name"
+      class="city-input"
+      [(ngModel)]="city"
+      name="city"
+      required
+    />
+    <button type="submit" class="button">Get Weather</button>
+  </form>
+
+  @if (weather) {
+  <div class="weather-card">
+    <div class="weather-info">
+      <p>Temperature: {{ weather.main.temp }}°C</p>
+      <p>Condition: {{ weather.weather[0].description }}</p>
+      <p>Humidity: {{ weather.main.humidity }}%</p>
+      <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
+    </div>
+  </div>
+  }
+</div>

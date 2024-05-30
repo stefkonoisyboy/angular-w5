@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Weather Forecast for {{ city }}</h2>
+
+  <form (submit)="getForecast(cityInput.value)">
+    <input
+      type="text"
+      #cityInput
+      placeholder="Enter city name"
+      class="city-input"
+      [(ngModel)]="city"
+      name="city"
+      required
+    />
+    <button type="submit" class="button">Get Forecast</button>
+  </form>
+
+  @if (forecast) {
+  <div class="forecast-card">
+    @for (item of forecast.list; track $index) {
+    <div class="forecast-item">
+      <p>{{ item.dt_txt }}</p>
+      <p>Temp: {{ item.main.temp }}°C, {{ item.weather[0].description }}</p>
+    </div>
+    }
+  </div>
+  }
+</div>
